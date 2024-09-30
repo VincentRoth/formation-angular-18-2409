@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from '../../shared/api/models/animal';
+import { AnimalService } from '../../shared/api/animal.service';
 
 @Component({
   selector: 'app-animal-details',
@@ -9,10 +10,9 @@ import { Animal } from '../../shared/api/models/animal';
 export class AnimalDetailsComponent implements OnInit {
   animal: Animal;
 
+  constructor(private animalService: AnimalService) {}
+
   ngOnInit(): void {
-    this.animal = {
-      name: 'Mon animal',
-      species: 'dog',
-    };
+    this.animal = this.animalService.get();
   }
 }
