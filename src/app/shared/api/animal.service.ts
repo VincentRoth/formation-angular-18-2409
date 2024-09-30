@@ -12,6 +12,7 @@ export class AnimalService {
       name: 'Mon animal du service',
       species: 'dog',
       email: 'test@email.test',
+      phoneNumber: '01.23.45.67.89',
     };
   }
 
