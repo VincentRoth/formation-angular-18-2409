@@ -11,6 +11,7 @@ export class AnimalService {
     return {
       name: 'Mon animal du service',
       species: 'dog',
+      email: 'test@email.test',
     };
   }
 

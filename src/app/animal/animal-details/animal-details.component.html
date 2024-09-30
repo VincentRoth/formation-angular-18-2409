@@ -1,7 +1,8 @@
 <p>
   Nom : {{ animal.name }}<br />
   Espèce : {{ animal.species }}<br />
-  Email : {{ animal.email }}<br />
+  Email : <a appMailTo>{{ animal.email }}</a>
+  <br />
   Téléphone : {{ animal.phoneNumber }}<br />
   Vétérinaire : {{ animal.veterinarian }}<br />
   Commenaire : {{ animal.comment }}<br />
