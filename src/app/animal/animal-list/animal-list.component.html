@@ -1,0 +1,11 @@
+<!--
+<ul>
+  <li *ngFor="let animal of animals">{{ animal.name }}</li>
+</ul>
+-->
+
+<ul>
+  @for (animal of animals; track animal.id) {
+  <li>{{ animal.name }}</li>
+  } @empty { Aucun animal }
+</ul>
