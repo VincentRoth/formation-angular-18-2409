@@ -6,6 +6,15 @@
 
 <ul>
   @for (animal of animals; track animal.id) {
-  <li>{{ animal.name }}</li>
+  <!--
+    Variables locales au @for :
+    $count
+    $index
+    $even, $odd
+    $first, $last    -->
+  <app-animal-list-item
+    [model]="animal"
+    (delete)="onItemDeletion($index)"
+  ></app-animal-list-item>
   } @empty { Aucun animal }
 </ul>
