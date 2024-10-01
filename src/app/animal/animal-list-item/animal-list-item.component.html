@@ -1,4 +1,6 @@
-<li>{{ model.name }}</li>
-<a>Voir</a>
-<a>Modifier</a>
-<button (click)="onDelete()">Supprimer</button>
+<li>
+  {{ model.name }}
+  <a [routerLink]="['animals', model.id]">Voir</a>
+  <a>Modifier</a>
+  <button (click)="onDelete()">Supprimer</button>
+</li>
