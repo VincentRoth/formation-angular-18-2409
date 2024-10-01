@@ -1,38 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Animal } from './models/animal';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnimalService {
-  constructor() {}
+  private endpoint = '/api/animals';
 
-  get(): Animal {
-    return {
-      name: 'Mon animal du service',
-      species: 'dog',
-      email: 'test@email.test',
-      phoneNumber: '01.23.45.67.89',
-    };
+  constructor(private httpClient: HttpClient) {}
+
+  get(id: number): Observable<Animal> {
+    return this.httpClient.get<Animal>(this.endpoint + '/' + id);
   }
 
-  getAll(): Animal[] {
-    return [
-      {
-        id: 1,
-        name: 'Mon animal 1',
-        species: 'dog',
-      },
-      {
-        id: 2,
-        name: 'Mon animal 2',
-        species: 'dog',
-      },
-      {
-        id: 3,
-        name: 'Mon animal 3',
-        species: 'dog',
-      },
-    ];
+  getAll(): Observable<Animal[]> {
+    return this.httpClient.get<Animal[]>(this.endpoint);
+  }
+
+  create(animal: Animal): Observable<Animal> {
+    return this.httpClient.post<Animal>(this.endpoint, animal);
+  }
+
+  update(animal: Animal): Observable<Animal> {
+    return this.httpClient.put<Animal>(this.endpoint + '/' + animal.id, animal);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(this.endpoint + '/' + id);
   }
 }

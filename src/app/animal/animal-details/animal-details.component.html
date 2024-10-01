@@ -1,3 +1,4 @@
+@if(animal){
 <p>
   Nom : {{ animal.name }}<br />
   Espèce : {{ animal.species }}<br />
@@ -7,3 +8,4 @@
   Vétérinaire : {{ animal.veterinarian }}<br />
   Commenaire : {{ animal.comment }}<br />
 </p>
+} @else { Chargement... }

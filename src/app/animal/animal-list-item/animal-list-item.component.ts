@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Animal } from '../../shared/api/models/animal';
+import { AnimalService } from '../../shared/api/animal.service';
 
 @Component({
   selector: 'app-animal-list-item',
@@ -10,7 +11,11 @@ export class AnimalListItemComponent {
   @Input({ required: true }) model: Animal;
   @Output() delete = new EventEmitter<void>();
 
+  constructor(private animalService: AnimalService) {}
+
   onDelete(): void {
-    this.delete.emit();
+    this.animalService.delete(this.model.id).subscribe(() => {
+      this.delete.emit();
+    });
   }
 }
