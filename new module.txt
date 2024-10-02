@@ -1,0 +1,6 @@
+ng generate module vet --routing
+ng generate component vet
+ng generate component vet/vet-details
+ng generate component vet/vet-list
+ng generate interface shared/api/models/vet
+ng generate service shared/api/vet
