@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Animal } from '../../shared/api/models/animal';
 import { AnimalService } from '../../shared/api/animal.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-animal-form',
@@ -10,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AnimalFormComponent implements OnInit {
   animal: Animal;
+  @ViewChild('animalForm') animalForm: NgForm;
 
   constructor(
     private animalService: AnimalService,
@@ -32,6 +34,10 @@ export class AnimalFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.animalForm.invalid) {
+      return;
+    }
+
     this.animalService.save(this.animal).subscribe((data) => {
       this.router.navigate(['/animals', data.id]);
     });

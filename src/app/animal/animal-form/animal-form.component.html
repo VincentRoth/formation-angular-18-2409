@@ -1,13 +1,43 @@
 @if(animal) {
-<form (ngSubmit)="onSubmit()">
+<form #animalForm="ngForm" (ngSubmit)="onSubmit()">
   <label for="name">Nom</label>
-  <input id="name" [(ngModel)]="animal.name" name="name" /> <br />
+  <input
+    id="name"
+    [(ngModel)]="animal.name"
+    name="name"
+    required
+    #nameCtrl="ngModel"
+  />
+  @if(animalForm.submitted && nameCtrl.hasError('required')) {
+  <p>Champ requis</p>
+  }
+  <br />
 
   <label for="species">Espèce</label>
-  <input id="species" [(ngModel)]="animal.species" name="species" /> <br />
+  <input
+    id="species"
+    [(ngModel)]="animal.species"
+    name="species"
+    required
+    #speciesCtrl="ngModel"
+  />
+  @if(animalForm.submitted && speciesCtrl.hasError('required')) {
+  <p>Champ requis</p>
+  }
+  <br />
 
   <label for="email">Email</label>
-  <input id="email" [(ngModel)]="animal.email" name="email" /> <br />
+  <input
+    id="email"
+    [(ngModel)]="animal.email"
+    name="email"
+    email
+    #emailCtrl="ngModel"
+  />
+  @if(animalForm.submitted && emailCtrl.hasError('email')) {
+  <p>Email non valide</p>
+  }
+  <br />
 
   <label for="phoneNumber">Téléphone</label>
   <input id="phoneNumber" [(ngModel)]="animal.phoneNumber" name="phoneNumber" />
