@@ -1,3 +1,4 @@
+@if(animal) {
 <form (ngSubmit)="onSubmit()">
   <label for="name">Nom</label>
   <input id="name" [(ngModel)]="animal.name" name="name" /> <br />
@@ -26,3 +27,4 @@
 
   <button type="submit">Enregistrer</button>
 </form>
+}

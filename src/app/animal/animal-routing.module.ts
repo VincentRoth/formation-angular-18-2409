@@ -18,6 +18,10 @@ const routes: Routes = [
         component: AnimalFormComponent,
       },
       {
+        path: 'edit/:id',
+        component: AnimalFormComponent,
+      },
+      {
         path: ':id',
         component: AnimalDetailsComponent,
         canActivate: [hasRightGuard],

@@ -28,4 +28,12 @@ export abstract class AbstractRestApiService<T extends { id?: number }> {
   delete(id: number): Observable<void> {
     return this.httpClient.delete<void>(this.endpoint + '/' + id);
   }
+
+  save(data: T): Observable<T> {
+    if (data.id) {
+      return this.update(data);
+    } else {
+      return this.create(data);
+    }
+  }
 }
