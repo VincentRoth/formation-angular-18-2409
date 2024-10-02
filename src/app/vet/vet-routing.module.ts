@@ -6,7 +6,7 @@ import { VetDetailsComponent } from './vet-details/vet-details.component';
 
 const routes: Routes = [
   {
-    path: 'veterinarians',
+    path: '',
     component: VetComponent,
     children: [
       { path: '', component: VetListComponent },
