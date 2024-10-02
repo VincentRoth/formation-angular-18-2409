@@ -1,6 +1,6 @@
 <li>
   {{ model.name }}
-  <a [routerLink]="['animals', model.id]">Voir</a>
+  <a [routerLink]="[model.id]">Voir</a>
   <a>Modifier</a>
   <button (click)="onDelete()">Supprimer</button>
 </li>
