@@ -5,6 +5,7 @@ import { AnimalDetailsComponent } from './animal-details/animal-details.componen
 import { AnimalComponent } from './animal.component';
 import { hasRightGuard } from '../shared/auth/has-right.guard';
 import { Right } from '../shared/auth/right.enum';
+import { AnimalFormComponent } from './animal-form/animal-form.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
     component: AnimalComponent,
     children: [
       { path: '', component: AnimalListComponent },
+      {
+        path: 'new',
+        component: AnimalFormComponent,
+      },
       {
         path: ':id',
         component: AnimalDetailsComponent,

@@ -21,7 +21,7 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
-      this.animalService.get(Number(id)).subscribe((data) => {
+      this.animalService.get(id).subscribe((data) => {
         this.animal = data;
       });
     });

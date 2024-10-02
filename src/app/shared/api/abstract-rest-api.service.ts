@@ -9,7 +9,7 @@ export abstract class AbstractRestApiService<T extends { id?: number }> {
     this.httpClient = inject(HttpClient);
   }
 
-  get(id: number): Observable<T> {
+  get(id: number | string): Observable<T> {
     return this.httpClient.get<T>(this.endpoint + '/' + id);
   }
 
