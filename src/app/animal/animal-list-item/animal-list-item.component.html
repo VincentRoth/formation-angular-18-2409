@@ -1,6 +1,8 @@
-<li>
-  {{ model.name }}
-  <a [routerLink]="[model.id]">Voir</a>
-  <a [routerLink]="['edit', model.id]">Modifier</a>
-  <button (click)="onDelete()">Supprimer</button>
-</li>
+<mat-card>
+  <mat-card-title>{{ model.name }}</mat-card-title>
+  <mat-card-actions>
+    <a mat-button [routerLink]="[model.id]">Voir</a>
+    <a mat-button [routerLink]="['edit', model.id]">Modifier</a>
+    <button mat-button (click)="onDelete()">Supprimer</button>
+  </mat-card-actions>
+</mat-card>
