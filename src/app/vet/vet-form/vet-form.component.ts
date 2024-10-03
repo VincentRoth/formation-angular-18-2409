@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { VetService } from '../../shared/api/vet.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Vet } from '../../shared/api/models/vet';
@@ -38,6 +38,10 @@ export class VetFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.vetForm.invalid) {
+      return;
+    }
+
     const formModel: Vet = this.vetForm.getRawValue();
     formModel.id = this.id;
     this.vetService.save(formModel).subscribe((data) => {
@@ -52,8 +56,11 @@ export class VetFormComponent implements OnInit {
     }
   ): void {
     this.vetForm = new FormGroup({
-      firstName: new FormControl<string>(vet.firstName),
-      lastName: new FormControl<string>(vet.lastName),
+      firstName: new FormControl<string>(vet.firstName, [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+      lastName: new FormControl<string>(vet.lastName, Validators.required),
     });
   }
 }

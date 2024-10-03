@@ -1,10 +1,24 @@
 @if(vetForm){
-<form [formGroup]="vetForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="vetForm" #ngForm="ngForm" (ngSubmit)="onSubmit()">
   <label for="firstName">Prénom</label>
   <input id="firstName" formControlName="firstName" /> <br />
+  <!-- @if(vetForm.hasError('required', 'firstName')){ -->
+  @if(ngForm.submitted && vetForm.get('firstName').hasError('required')){
+  <p>Ce champ est requis</p>
+  } @else if(ngForm.submitted &&
+  vetForm.get('firstName').hasError('minlength')){
+  <p>
+    Taille minimum de
+    {{ vetForm.get("firstName").getError("minlength").requiredLength }}
+  </p>
+  }
 
   <label for="lastName">Nom</label>
   <input id="lastName" formControlName="lastName" /> <br />
+  <!-- @if(vetForm.hasError('required', 'lastName')){ -->
+  @if(ngForm.submitted && vetForm.get('lastName').hasError('required')){
+  <p>Ce champ est requis</p>
+  }
 
   <button type="submit">Enregitrer</button>
 </form>
