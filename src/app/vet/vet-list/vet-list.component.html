@@ -4,7 +4,7 @@
   @for(vet of vets; track vet.id) {
   <li>{{ vet.firstName }} {{ vet.lastName }}</li>
   <a [routerLink]="[vet.id]">Voir</a>
-  <a>Modifier</a>
+  <a [routerLink]="['edit', vet.id]">Modifier</a>
   <button (click)="onItemDeletion(vet)">Supprimer</button>
   }
 </ul>

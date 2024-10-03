@@ -14,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: '', component: VetListComponent },
       { path: 'new', component: VetFormComponent },
+      { path: 'edit/:id', component: VetFormComponent },
       {
         path: ':id',
         component: VetDetailsComponent,

@@ -1,5 +1,5 @@
 export interface Vet {
-  id?: number;
+  id?: number | string;
   firstName: string;
   lastName: string;
 }

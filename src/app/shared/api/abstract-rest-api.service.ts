@@ -2,7 +2,9 @@ import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export abstract class AbstractRestApiService<T extends { id?: number }> {
+export abstract class AbstractRestApiService<
+  T extends { id?: number | string }
+> {
   private httpClient: HttpClient;
 
   constructor(private endpoint: string) {
@@ -25,7 +27,7 @@ export abstract class AbstractRestApiService<T extends { id?: number }> {
     return this.httpClient.put<T>(this.endpoint + '/' + data.id, data);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: number | string): Observable<void> {
     return this.httpClient.delete<void>(this.endpoint + '/' + id);
   }
 
