@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AnimalComponent } from './animal.component';
+import { RouterModule } from '@angular/router';
 
 describe('AnimalComponent', () => {
   let component: AnimalComponent;
@@ -8,9 +9,9 @@ describe('AnimalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AnimalComponent]
-    })
-    .compileComponents();
+      declarations: [AnimalComponent],
+      imports: [RouterModule.forRoot([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AnimalComponent);
     component = fixture.componentInstance;
