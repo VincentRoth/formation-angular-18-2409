@@ -21,7 +21,7 @@ export class VetDetailsComponent {
   ngOnInit(): void {
     this.subscription = this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
-      this.vetService.get(Number(id)).subscribe((data) => {
+      this.vetService.get(id).subscribe((data) => {
         this.vet = data;
       });
     });

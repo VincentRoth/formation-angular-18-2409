@@ -5,6 +5,7 @@ import { VetListComponent } from './vet-list/vet-list.component';
 import { VetDetailsComponent } from './vet-details/vet-details.component';
 import { hasRightGuard } from '../shared/auth/has-right.guard';
 import { Right } from '../shared/auth/right.enum';
+import { VetFormComponent } from './vet-form/vet-form.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     component: VetComponent,
     children: [
       { path: '', component: VetListComponent },
+      { path: 'new', component: VetFormComponent },
       {
         path: ':id',
         component: VetDetailsComponent,
